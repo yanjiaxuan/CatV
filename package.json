@@ -1,0 +1,35 @@
+{
+  "name": "catv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "dev": "rollup -w -c --environment FORMAT:esm",
+    "build": "npm run build:esm & npm run build:umd & npm run build:min",
+    "build:esm": "rollup -c --environment FORMAT:esm",
+    "build:umd": "rollup -c --environment FORMAT:umd",
+    "build:min": "rollup -c --environment FORMAT:min",
+    "lint:fix": "npx tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"
+  },
+  "author": "jiaxuan.yan",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-typescript": "^7.9.0",
+    "@rollup/plugin-node-resolve": "^8.0.0",
+    "@types/d3": "^5.7.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "rollup": "^2.10.9",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "d3": "^5.16.0",
+    "lodash": "^4.17.15"
+  }
+}
