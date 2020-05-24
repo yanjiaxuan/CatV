@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
   "scripts": {
-    "dev": "rollup -w -c --environment FORMAT:esm",
+    "dev": "rollup -w -c --environment FORMAT:dev",
     "build": "npm run build:esm & npm run build:umd & npm run build:min",
     "build:esm": "rollup -c --environment FORMAT:esm",
     "build:umd": "rollup -c --environment FORMAT:umd",
@@ -23,6 +23,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "rollup": "^2.10.9",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-browsersync": "^1.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
     "rollup-plugin-uglify": "^6.0.4",
     "tslint": "^6.1.2",

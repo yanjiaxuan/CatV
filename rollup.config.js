@@ -4,6 +4,7 @@ const nodeResolve = require('@rollup/plugin-node-resolve').default;
 const uglify = require('rollup-plugin-uglify').uglify;
 const pkg = require('./package.json');
 const merge = require('lodash').merge
+const browsersync = require('rollup-plugin-browsersync')
 
 const extensions = ['.js', '.ts'];
 
@@ -34,6 +35,24 @@ const jobs = {
     },
     plugins: [uglify()],
   },
+  dev: {
+    output: {
+      format: 'umd',
+      file: resolve(pkg.main.replace(/(.\w+)$/, '.min$1')),
+      name: 'CatV',
+    },
+    plugins: [
+      uglify(),
+      browsersync({
+        ui: { port: 8080 },
+        files: ["lib/index.js", "test/**/*"],
+        server: {
+          baseDir: ["test", "lib"],
+          index: "index.html"
+        }
+      })
+    ],
+  }
 };
 
 // 从环境变量获取打包特征
